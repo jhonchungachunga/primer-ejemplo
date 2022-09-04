@@ -13,3 +13,6 @@ git commnit --> "mi primer commit" ->presionamos  + esc :wq
 
 git log ---> para diferenciar cada version de las fotos que tomas 
 git diff nombreArchivo ---> para ver los cambios que se han echo;
+
+
+git commit -m "esto es comando para abreviar las ventanas"
