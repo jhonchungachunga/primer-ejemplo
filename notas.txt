@@ -1,3 +1,4 @@
+pwd --> para ver en que directorio estamos
 git init  -> para agregar al workink directory
 git status -> para ver que archivos estan o no en el area de trabajo
 
