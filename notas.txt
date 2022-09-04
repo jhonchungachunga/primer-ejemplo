@@ -1,0 +1,7 @@
+git init  -> para agregar al workink directory
+git status -> para ver que archivos estan o no en el area de trabajo
+
+git commit-> para crear una foto 
+            configuramos el email y en nombre
+            git config --global user.email "you@example.com"
+            git config --global user.name "Your Name"
