@@ -24,4 +24,4 @@ git checkout login --> para cambiar de version alternativa la version
 
 
 
-git add.    --> para agregar todos los archivos y no uno a uno
+git add .    --> para agregar todos los archivos y no uno a uno
