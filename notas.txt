@@ -19,7 +19,7 @@ git commit -m "esto es comando para abreviar las ventanas";
 
 git branch --> crear versiones alternativas --- vemos en que version alternativa estamos
 git branch login -->creamos una verions alternativa 
-git checkout login --> para cambiar a la version
+git checkout login --> para cambiar de version alternativa la version
 
 
 
