@@ -2,6 +2,7 @@ git init  -> para agregar al workink directory
 git status -> para ver que archivos estan o no en el area de trabajo
 
 git commit-> para crear una foto 
+git add --> para guardar y luego hacerle una foto con git commit
 
             configuramos el email y en nombre
             git config --global user.email "you@example.com"
@@ -11,3 +12,4 @@ git commnit --> "mi primer commit" ->presionamos  + esc :wq
 
 
 git log ---> para diferenciar cada version de las fotos que tomas 
+git diff nombreArchivo ---> para ver los cambios que se han echo;
