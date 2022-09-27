@@ -9,7 +9,7 @@ git add --> para guardar y luego hacerle una foto con git commit
             git config --global user.email "you@example.com"
             git config --global user.name "Your Name"
 
-git commnit --> "mi primer commit" ->presionamos  + esc :wq
+git commit --> "mi primer commit" ->presionamos  + esc :wq
 
 
 git log ---> para diferenciar cada version de las fotos que tomas 
@@ -22,6 +22,9 @@ git branch --> crear versiones alternativas --- vemos en que version alternativa
 git branch login -->creamos una verions alternativa 
 git checkout login --> para cambiar de version alternativa la version
 
+
+git checkout -- nombreArchivo --> para revertir los cambios de un archivo guardado sin hacer commit
+git restore --staged nombreArchivo --> para revertir un commit 
 
 
 
