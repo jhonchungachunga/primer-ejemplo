@@ -37,3 +37,6 @@ git add .    --> para agregar todos los archivos y no uno a uno
 para trabajar en remoto 
 git remote add origin https://github.com/jhonchungachunga/fundodon_botas.git --> sube agrega el repositorio para ser subido 
 git push -u origin main  -->sube el repositorio a la rama seleccionada y la url anteriormente indicada
+
+
+git remote set-url origin https://github.com/USERNAME/REPOSITORY.git --> para cambiar la url remoto 
