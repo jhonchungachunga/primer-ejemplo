@@ -36,6 +36,11 @@ git add .    --> para agregar todos los archivos y no uno a uno
 para trabajar entre ramas o branches
 git branch -m nombreRama nuevoNombreRama --> para cambiar el nombre a una rama
 git branch -d nombreRama --> para eliminar una rama , pero tenemos que estar en una rama diferente a la que vamos a eliminar 
+git diff rama1 rama2 --> para ver las diferencias entre ramas
+
+para unificar ramas -->
+git checkout ramaaactualizar ---> siempre nos posicionamos en la rama que va recibir los cambios
+git merge ramaOrigen ramaDestino --> nos traemos los cambios de la rama de origen a la rama destino
 
 
 para trabajar en remoto 
