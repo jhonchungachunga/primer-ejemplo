@@ -56,3 +56,9 @@ git remote set-url origin https://github.com/USERNAME/REPOSITORY.git --> para ca
 
 eliminar commit
 git reset --hard HEAD~1   --> elimina el ultimo commit o los que deseas 
+
+
+
+
+
+touch --> para crear archivos
