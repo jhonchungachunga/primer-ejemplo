@@ -60,5 +60,8 @@ git reset --hard HEAD~1   --> elimina el ultimo commit o los que deseas
 
 
 
+git clone urldelrepositorio --> clona un repositorio
+git pull origin rama ---> se trae los cambios de un repositorio en una determinada rama 
 
 touch --> para crear archivos
+
