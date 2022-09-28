@@ -49,3 +49,7 @@ git push -u origin main  -->sube el repositorio a la rama seleccionada y la url 
 
 git remote -v --> para ver la url remota
 git remote set-url origin https://github.com/USERNAME/REPOSITORY.git --> para cambiar la url remoto 
+
+
+eliminar commit
+git reset --hard HEAD~1   --> elimina el ultimo commit o los que deseas 
