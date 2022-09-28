@@ -8,6 +8,9 @@ git add --> para guardar y luego hacerle una foto con git commit
             configuramos el email y en nombre
             git config --global user.email "you@example.com"
             git config --global user.name "Your Name"
+            git config user.password --> le pasamos el token
+
+
 
 git commit --> "mi primer commit" ->presionamos  + esc :wq
 
