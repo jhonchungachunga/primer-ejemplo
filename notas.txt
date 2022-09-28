@@ -33,6 +33,10 @@ git add .    --> para agregar todos los archivos y no uno a uno
 
 
 
+para trabajar entre ramas o branches
+git branch -m nombreRama nuevoNombreRama --> para cambiar el nombre a una rama
+git branch -d nombreRama --> para eliminar una rama , pero tenemos que estar en una rama diferente a la que vamos a eliminar 
+
 
 para trabajar en remoto 
 git remote add origin https://github.com/jhonchungachunga/fundodon_botas.git --> sube agrega el repositorio para ser subido 
