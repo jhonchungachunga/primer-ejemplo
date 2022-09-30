@@ -1,0 +1,188 @@
+comandos para las bases de datos
+
+
+show databases --> lista todas las bases de datos
+show create table animales; ---> para ver toda la estructura de la tabla en una query
+show tables --> muestra las tablas creadas en la base de datos
+create database nombreBaseDatos --> crea una base de datos
+
+
+tipos de datos int,integer,float,varchar,date;
+use nombreBaseDatos ---> para seleccionarla para porder trabajar con ella
+
+
+use jhonchungachunga;
+create table animales(
+    id int,   --> PONER AUTO_INCREMENT
+    tipo varchar(255),
+    estado varchar(255),
+    PRIMARY KEY(id)
+);
+
+
+
+
+
+CAMBIAR TIPO DE DATO EN COLUMNA
+ALTER TABLE animales MODIFY COLUMN id int auto_increment;
+
+
+-----------FOREIGN KEY , INDICES
+AGREGAR UN CAMPO Y HACERLO FOREING KEY --> los datos fk tienen que existir en la tabla que se hace referencia
+ALTER TABLE reproductora ADD COLUMN id_raza int NOT NULL;
+ALTER TABLE reproductora ADD CONSTRAINT fk_reproductora_raza FOREIGN KEY (id_raza) REFERENCES raza(id);
+
+ALTER TABLE reproductora ADD CONSTRAINT fk_reproductora_raza FOREIGN KEY (id_raza) REFERENCES raza(id) on delete restrict on update cascade; -->METODO RECOMENDADO
+
+ALTER TABLE reproductora ADD FOREIGN KEY(id_tutor) REFERENCES tutor(id); 
+
+
+AGREGAR INDICE UNICO
+ALTER TABLE tutor ADD UNIQUE(nombres);  --> para no repetir un campo ejemplo codigo reproductora L1,L2
+
+ELIMINAR INDICE UNICO
+ALTER TABLE tutor DROP INDEX(nombres);
+-----------------------------------------
+
+
+
+-----------OPERACIONES CON TABLAS-----------
+INSERTAR NUEVO CAMPO EN TABLA
+ALTER TABLE usuario ADD COLUMN apellidos VARCHAR(100);
+
+EDITAR NOMBRE COLUMNA DE UNA TABLA
+ALTER TABLE tutor CHANGE COLUMN nombres nuevoNombre VARCHAR(150) not null;
+
+ELIMINAR COLUMNA DE TABLA
+ALTER TABLE tutor DROP COLUMN campoEliminar;
+
+MOVER A UNA POSICION DESPUES DE AFTER CAMPO
+ALTER TABLE usuario MODIFY COLUMN nombre VARCHAR(100) AFTER email;
+
+RENOMBRAR TABLA
+rename table productos to producto;
+
+ELIMINA UNA TABLA
+drop table animales;
+
+
+
+
+------------CRUD---------
+CREATE
+insert into animales (tipo,estado) values ('chachito','feliz');
+
+READ
+mostrando resultados
+select * from animales where id=1;
+select * from animales where estado='feliz';
+select * from animales where estado='feliz' and tipo='perico';
+
+UPDATE
+actualizando regitros
+update animales set estado='loco' where id=1; --> forma correcta de hacer
+update animales set estado='loco' where tipo='gato'; --> forma incorrecta de hacer  arroja error 1175, ya que se le tiene que pasar el id
+
+DELETE
+eliminando registros
+delete from  animales where id=1; ---> seria la forma correcta de realizar
+delete from animales where estado= 'feliz'; --> en la nueva version mysql esto no esta permitido, ya que te pedira pasarle el id o pk error 1175
+---------------------------
+
+
+
+
+CREANDO E INSERTANDO REGISTROS
+use jhonchungachunga;
+CREATE TABLE usuario(
+id int not null AUTO_INCREMENT,
+name varchar(50) NOT null,
+edad int NOT null,
+email varchar(100) not null,
+PRIMARY KEY(id)
+);
+insert into usuario(name,edad,email) values ('Oscar','25','oscar@gmail.com');
+insert into usuario(name,edad,email) values ('Layla','15','layla@gmail.com');
+insert into usuario(name,edad,email) values ('Nicolas','36','nico@gmail.com');
+insert into usuario(name,edad,email) values ('Chanchito','7','chanchito@gmail.com');
+
+
+
+
+
+CONSULTAS SELECT
+select * from usuario limit 1;
+select * from usuario where edad > 15;
+select * from usuario where edad >= 15;
+select * from usuario where edad >= 20 and email='nico@gmail.com';
+select * from usuario where edad >= 20 or  email='layla@gmail.com';
+select * from usuario where email != 'layla@gmail.com';
+select * from usuario where edad between 15 and 30;   --> toma la edad ente 15 y 30; 
+select * from usuario where email like '%gmail%';
+select * from usuario order by edad asc;
+select * from usuario order by edad desc;
+select max(edad) as mayor from usuario;
+select min(edad) as menor from usuario;
+select id,name from usuario;
+select id,name as nombre from usuario;
+
+
+
+CREANDO TABLAS CON CLAVER FORANEAS Y PK
+create table producto(
+    id int not null auto_increment,
+    name varchar(50) not null,
+    create_by int not null,
+    marca varchar(50) not null,
+    PRIMARY KEY(id),
+    FOREIGN KEY(create_by) references usuario(id)
+);
+
+
+--insertado multiple
+insert into producto (name,create_by,marca)
+values 
+        ('ipad','1','apple'),
+        ('iphone','1','apple'),
+        ('watch','2','apple'),
+        ('macbook','1','apple'),
+        ('imac','3','apple'),
+        ('ipad mini','2','apple');
+
+
+
+
+
+
+
+
+TRABAJANDO CON JOIN
+LEFT JOIN 
+select u.id, u.email, p.name from usuario u left join producto p on u.id = p.create_by;
+
+SELECT r.codigo, t.nombres, e.descripcion from reproductora r
+LEFT JOIN tutor t on t.id = r.id_tutor
+LEFT JOIN estado e on e.id = r.id_estado;
+
+
+RIGHT JOIN
+select u.id, u.email, p.name from usuario u right join producto p on u.id = p.create_by;
+
+INNER JOIN
+select u.id, u.email, p.name from usuario u INNER join producto p on u.id = p.create_by;
+
+CROSS JOIN
+----- producto cartesiano usarlo con cuidado
+select u.id, u.name, p.id, p.name from usuario u cross join producto p;
+
+
+
+
+GROUP by
+select count(id),marca from producto group by marca;
+select count(p.id),u.name from producto p left join usuario u on u.id = p.create_by group by create_by;
+select count(p.id),u.name from producto p left join usuario u on u.id = p.create_by group by create_by
+having count(p.id) >= 2;
+SELECT count(id),estado,tutor from tbl_reproductoras GROUP by estado,tutor; --
+
+
